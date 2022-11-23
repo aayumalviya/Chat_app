@@ -1,0 +1,14 @@
+<div class="border" style='padding: 5px 10px; background: #fff; margin-bottom: 5px;'>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, style: 'height: 40px; width: 40px; margin-top: 5px;', class: "rounded-circle" %>
+  <% end %>
+  <%= @user.name %>
+</div>
+<div class="card" style="height: 400px;">
+  <div class="card-body">
+    <% @messages.each do |msg| %>
+      <%= render partial: 'messsage_details', locals: { msg: msg } %>
+    <% end %>
+    <%= render 'new' %>
+  </div>
+</div>

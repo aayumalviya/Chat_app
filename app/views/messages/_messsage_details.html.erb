@@ -1,0 +1,31 @@
+<% if msg.user_id == current_user.id %>
+  <div class='row'>
+      <div class='col-6'>
+      </div>
+      <div class='col-5'>
+        <div style= 'width: fit-content; background-color: whitesmoke;' class="border">
+          <div style='margin-top: 5px;'><%= msg.content %></div>
+        </div>
+      </div>
+      <div class='col-1'>
+        <% if current_user.image.attached? %>
+          <%= image_tag current_user.image, style: 'height: 40px; width: 40px; margin-top: 5px;', class: "rounded-circle" %>
+        <% end %>
+      </div>
+  </div>
+<% else %>
+<div class='row'>
+    <div class='col-1'> 
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, style: 'height: 40px; width: 40px; margin-top: 5px;', class: "rounded-circle" %>
+      <% end %>
+    </div>
+  <div class='col-5'>
+    <div style= 'width: fit-content; background-color: lightblue;' class="border">
+        <div style='margin-top: 5px;'><%= msg.content %>
+    </div>
+  </div>
+  <div class='col-6'>
+  </div>
+</div>
+<% end %>

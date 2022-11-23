@@ -1,0 +1,19 @@
+<style>
+.submit{
+  background-color: lightblue;
+  position: absolute;
+  top: 85%;
+}
+</style>
+<%= form_for([@user, @user.messages.build], remote: true) do |form| %>
+  <div class='row'>
+    <div class='col-10'>
+      <%#= form.label :content %>
+      <%= form.text_field :content,class:"form-control", placeholder: 'Type Message', style: 'width: 600px; border-radius: 20px; position: absolute;
+    top: 85%;' %>
+    </div>
+    <div class='col-2'>
+      <%= form.submit 'Send',style: 'width: 100px; border-radius: 20px;', class: 'submit' %>
+    </div>
+  </div>
+  <% end %>

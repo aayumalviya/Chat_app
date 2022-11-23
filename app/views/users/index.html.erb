@@ -1,0 +1,30 @@
+<div style='height: 70px; width: 1320px; background-color: lightblue'>
+<% if current_user.present? %>
+  <%= link_to 'SignOut', destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark', style: 'float: right; margin-right: 10px; margin-top: 10px;' %>
+  <% if current_user.image.attached? %>
+    <%= image_tag current_user.image, style: 'height: 50px; width: 50px; margin-left: 10px; border-radius: 20px; margin-top: 10px;' %>
+  <% end %>
+  <%= @current_user.email %><br>
+<% else %>
+  <%= link_to 'SignIn', user_session_path %>
+<% end %>
+</div>
+<br><br>
+
+<div class='row'>
+  <div class='col-4'>
+    <div class="card" style="width: 400px; height: fit-content; margin-left: 10px;">
+      <div class="card-body">
+        <% @users.each do |user| %>
+          <% if user.image.attached? %>
+            <%= image_tag user.image, style: 'height: 50px; width: 50px;'%>
+          <% end %>
+          <b><%= link_to user.name, user_messages_path(user), remote: true %></b>
+        <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id='show_messages' class='col-8'>  </div>
+</div>
